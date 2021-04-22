@@ -1,6 +1,6 @@
 # CMPE-279 Assignemnts
 
-## Doing the assignments individually 
+### Group: Doing the assignments individually 
 
 ## Assignment 1
 
