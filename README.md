@@ -10,6 +10,7 @@ In assignment 1, you will extend the server code to use privilege separation. Yo
 
 ### Instructions to run:
 Run client code on port 80
+
 gcc -o server server.c && sudo ./server  
 gcc -o client client.c && ./client
 
@@ -21,5 +22,6 @@ Starting with assignment 1 as a starting point, add in code to re-exec the serve
 
 ### Instructions to run:
 Run client code on port 80
+
 gcc -o server server.c && sudo ./server  
 gcc -o client client.c && ./client
