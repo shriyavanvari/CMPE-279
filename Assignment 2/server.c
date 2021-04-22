@@ -29,8 +29,8 @@ int main(int argc, char const *argv[])
         {
             printf("Child process is running\n");
 
-            re_exec(new_socket); //exec from  child process after the fork
-                return 0;
+            re_exec(new_socket); // re exec from forked child process. 
+            //Passing the socket created by parent to re rexec child since it will have new address space which does not have access to the socket 
             }
         else if(current>0){
         //in parent process fork return child's pid which is greater than 0
@@ -46,7 +46,7 @@ int main(int argc, char const *argv[])
         }
 
     else{
-        //re execution comes here
+        //re execution of the program comes here
         printf("Current child id is: %d \n", getuid());
         //drop privilege
         struct passwd* nobodystruct;
@@ -128,10 +128,12 @@ int set_sock(){
 
 
 void re_exec(int new_socket){
+    //Since 
     char socket_id_str[12];
     //convert socket id to string 
     sprintf(socket_id_str, "%d", new_socket);
-    char *args[] = {"./server", socket_id_str, NULL}; //pass socket id as env variable
+    char *args[] = {"./server", socket_id_str, NULL}; //pass socket id as env variable to the new execution as well 
+                                                     // so that we can re execute in the same socket as parent and forked child but in new address space
     if (execvp(args[0], args) < 0) { 
         printf("Error during exec\n");
     };
